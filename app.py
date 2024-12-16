@@ -28,7 +28,7 @@ def convert_to_downloadable(image_array, filename):
 st.markdown("<h1 style='text-align: center; font-size: 36px;'>Eutectic Phase Fraction Area Analysis</h1>", unsafe_allow_html=True)
 
 # Step 1: Upload image
-uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
+uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg", "tiff", "tif"])
 
 if uploaded_file is not None:
     # Load the image
