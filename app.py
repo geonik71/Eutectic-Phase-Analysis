@@ -88,7 +88,26 @@ if uploaded_file is not None:
     # Step 3: Display the eutectic phase fractions with custom styling
     st.markdown(f"<div style='font-size: 24px; font-weight: bold; color: #ff6347; text-align: center; padding: 10px; background-color: #f0f8ff; border-radius: 10px;'>Eutectic Phase Fraction (Before Cleaning): {eutectic_fraction_before:.4%}</div>", unsafe_allow_html=True)
     st.markdown(f"<div style='font-size: 24px; font-weight: bold; color: #ff6347; text-align: center; padding: 10px; background-color: #f0f8ff; border-radius: 10px;'>Eutectic Phase Fraction (After Cleaning): {eutectic_fraction_after:.4%}</div>", unsafe_allow_html=True)
+# Create two columns for "How the Code Works" and "Description"
+col1, col2 = st.columns(2)
 
+with col1:
+    st.markdown("<h2 style='font-size: 24px;'>How the Code Works</h2>", unsafe_allow_html=True)
+    st.markdown("""
+        <ul style='font-size: 18px;'>
+            <li><strong>Step 1:</strong> Upload an image that contains the eutectic phase.</li>
+            <li><strong>Step 2:</strong> The image is converted to grayscale to simplify processing.</li>
+            <li><strong>Step 3:</strong> Otsu's thresholding method is applied to separate the eutectic phase from the background.</li>
+            <li><strong>Step 4:</strong> Small objects are removed from the thresholded image to clean it up.</li>
+            <li><strong>Step 5:</strong> The eutectic phase fraction is calculated based on the proportion of pixels in the eutectic phase.</li>
+        </ul>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("<h2 style='font-size: 24px;'>Description of Eutectic Phase</h2>", unsafe_allow_html=True)
+    st.markdown("""
+        <p style='font-size: 18px;'>The eutectic phase refers to a specific mixture of two materials that, when solidified, form a unique microstructure. The eutectic phase often plays an important role in determining the physical properties of alloys. This analysis helps in identifying and quantifying the eutectic phase in materials like metals, where the distribution and volume fraction of this phase can influence the mechanical properties of the final product.</p>
+    """, unsafe_allow_html=True)
 # Add description below
 st.markdown("""  
     <h2 style='font-size: 24px;'>Why Two Detection Images?</h2>
