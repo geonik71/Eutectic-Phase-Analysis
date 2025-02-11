@@ -88,17 +88,18 @@ if uploaded_file is not None:
     # Step 3: Display the eutectic phase fractions with custom styling
     st.markdown(f"<div style='font-size: 24px; font-weight: bold; color: #ff6347; text-align: center; padding: 10px; background-color: #f0f8ff; border-radius: 10px;'>Eutectic Phase Fraction (Before Cleaning): {eutectic_fraction_before:.4%}</div>", unsafe_allow_html=True)
     st.markdown(f"<div style='font-size: 24px; font-weight: bold; color: #ff6347; text-align: center; padding: 10px; background-color: #f0f8ff; border-radius: 10px;'>Eutectic Phase Fraction (After Cleaning): {eutectic_fraction_after:.4%}</div>", unsafe_allow_html=True)
-    # Add a fun GitHub star request
-    st.markdown("""
-        <div style='text-align: center; margin-top: 20px;'>
-            <h2>⭐ Enjoyed this App? Support by Starring on GitHub! ⭐</h2>
-            <p style='font-size: 18px;'>If you found this tool helpful, give it a ⭐ on GitHub! It means a lot! 😊</p>
-            <a href='https://github.com/your-github-repo' target='_blank'>
-                <img src='https://media.giphy.com/media/l0Exk8EUzSLsrErEQ/giphy.gif' width='200'>
-            </a>
-            <p style='font-size: 18px;'><a href='https://github.com/your-github-repo' target='_blank' style='text-decoration: none; font-weight: bold; color: #FF4500;'>Click here to star!</a> 🚀</p>
-        </div>
-    """, unsafe_allow_html=True)
+
+# ⭐ Fun GitHub star request section ⭐
+st.markdown("""
+    <div style='text-align: center; margin-top: 20px;'>
+        <h2>⭐ Enjoyed this App? Support by Starring on GitHub! ⭐</h2>
+        <p style='font-size: 18px;'>If you found this tool helpful, give it a ⭐ on GitHub! It means a lot! 😊</p>
+        <a href='https://github.com/your-github-repo' target='_blank'>
+            <img src='https://media.giphy.com/media/l0Exk8EUzSLsrErEQ/giphy.gif' width='200'>
+        </a>
+        <p style='font-size: 18px;'><a href='https://github.com/your-github-repo' target='_blank' style='text-decoration: none; font-weight: bold; color: #FF4500;'>Click here to star!</a> 🚀</p>
+    </div>
+""", unsafe_allow_html=True)
 
 # Create two columns for "How the Code Works" and "Description"
 col1, col2 = st.columns(2)
@@ -120,13 +121,13 @@ with col2:
     st.markdown("""
         <p style='font-size: 18px;'>The eutectic phase refers to a specific mixture of two materials that, when solidified, form a unique microstructure. The eutectic phase often plays an important role in determining the physical properties of alloys. This analysis helps in identifying and quantifying the eutectic phase in materials like metals, where the distribution and volume fraction of this phase can influence the mechanical properties of the final product.</p>
     """, unsafe_allow_html=True)
-# Add description below
+
+# Explanation of detection images
 st.markdown("""  
     <h2 style='font-size: 24px;'>Why Two Detection Images?</h2>
     <p style='font-size: 18px;'>In some cases, the eutectic phase may be mixed with unwanted eutectic regions in the grains, or there may be noise present in the image that can distort the analysis. To handle these challenges, we provide two types of detection images:</p>
     <ul style='font-size: 18px;'>
-        <li><strong>Thresholded Image (Otsu):</strong> This image represents the initial thresholding result, where the eutectic phase is separated from the background using Otsu's method. It might contain unwanted eutectic regions that are not part of the actual eutectic phase but are incorrectly identified due to image noise or other factors.</li>
-        <li><strong>Cleaned Image (Dots Removed):</strong> This image is the result of removing small objects that could be interpreted as noise. By filtering out small unwanted eutectic regions and other image artifacts, it offers a cleaner representation of the actual eutectic phase, allowing for more accurate analysis.</li>
+        <li><strong>Thresholded Image (Otsu):</strong> This image represents the initial thresholding result, where the eutectic phase is separated from the background using Otsu's method.</li>
+        <li><strong>Cleaned Image (Dots Removed):</strong> This image removes small unwanted regions and artifacts, offering a cleaner representation of the actual eutectic phase.</li>
     </ul>
-    <p style='font-size: 18px;'>Using these two detection images ensures that we account for unwanted noise and eutectic regions, making the analysis more reliable and focused on the true eutectic phase.</p>
 """, unsafe_allow_html=True)
