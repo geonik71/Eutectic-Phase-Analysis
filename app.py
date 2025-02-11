@@ -17,15 +17,27 @@ def remove_small_objects(binary_image, min_size):
 
     return cleaned_binary
 
-# Function to convert images to downloadable format
-def convert_to_downloadable(image_array, filename):
+# Function to convert images to a downloadable format
+def convert_to_downloadable(image_array, format="PNG"):
     pil_image = Image.fromarray(image_array)
     buffered = BytesIO()
-    pil_image.save(buffered, format="PNG")
+    pil_image.save(buffered, format=format)
     return buffered.getvalue()
 
 # Streamlit app
 st.markdown("<h1 style='text-align: center; font-size: 36px;'>Eutectic Phase Fraction Area Analysis</h1>", unsafe_allow_html=True)
+
+# ⭐ GitHub Star Section
+st.markdown("""
+    <div style='text-align: center; margin-top: 20px;'>
+        <h2>⭐ Enjoyed this App? Support by Starring on GitHub! ⭐</h2>
+        <p style='font-size: 18px;'>If you found this tool helpful, give it a ⭐ on GitHub! Your support helps academic research! 📚</p>
+        <a href='https://github.com/your-github-repo' target='_blank'>
+            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1024px-Octicons-mark-github.svg.png' width='120'>
+        </a>
+        <p style='font-size: 18px;'><a href='https://github.com/your-github-repo' target='_blank' style='text-decoration: none; font-weight: bold; color: #0366d6;'>Click here to star!</a> ⭐</p>
+    </div>
+""", unsafe_allow_html=True)
 
 # Step 1: Upload image
 uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg", "tiff", "tif"])
@@ -55,55 +67,44 @@ if uploaded_file is not None:
     # Step 2: Display result images in one row and 3 columns
     col1, col2, col3 = st.columns(3)
 
+    # Format selection dropdown
+    image_format = st.selectbox("Select download format:", ["PNG", "JPG", "JPEG", "TIFF", "TIF"])
+
     with col1:
         st.image(cv2.cvtColor(image, cv2.COLOR_BGR2RGB), caption="Original Image", use_container_width=True)
-        original_image_download = convert_to_downloadable(cv2.cvtColor(image, cv2.COLOR_BGR2RGB), "original_image.png")
+        original_image_download = convert_to_downloadable(cv2.cvtColor(image, cv2.COLOR_BGR2RGB), image_format)
         st.download_button(
-            label="Download Original Image",
+            label=f"Download Original Image ({image_format})",
             data=original_image_download,
-            file_name="original_image.png",
-            mime="image/png"
+            file_name=f"original_image.{image_format.lower()}",
+            mime=f"image/{image_format.lower()}"
         )
 
     with col2:
         st.image(otsu_thresh, caption="Thresholded Image (Otsu)", use_container_width=True, channels="GRAY")
-        otsu_thresh_download = convert_to_downloadable(otsu_thresh, "otsu_thresh.png")
+        otsu_thresh_download = convert_to_downloadable(otsu_thresh, image_format)
         st.download_button(
-            label="Download Thresholded Image (Otsu)",
+            label=f"Download Thresholded Image ({image_format})",
             data=otsu_thresh_download,
-            file_name="otsu_thresh.png",
-            mime="image/png"
+            file_name=f"otsu_thresh.{image_format.lower()}",
+            mime=f"image/{image_format.lower()}"
         )
 
     with col3:
         st.image(cleaned_binary, caption="Cleaned Image (Dots Removed)", use_container_width=True, channels="GRAY")
-        cleaned_binary_download = convert_to_downloadable(cleaned_binary, "cleaned_binary.png")
+        cleaned_binary_download = convert_to_downloadable(cleaned_binary, image_format)
         st.download_button(
-            label="Download Cleaned Image (Dots Removed)",
+            label=f"Download Cleaned Image ({image_format})",
             data=cleaned_binary_download,
-            file_name="cleaned_binary.png",
-            mime="image/png"
+            file_name=f"cleaned_binary.{image_format.lower()}",
+            mime=f"image/{image_format.lower()}"
         )
 
     # Step 3: Display the eutectic phase fractions with custom styling
     st.markdown(f"<div style='font-size: 24px; font-weight: bold; color: #ff6347; text-align: center; padding: 10px; background-color: #f0f8ff; border-radius: 10px;'>Eutectic Phase Fraction (Before Cleaning): {eutectic_fraction_before:.4%}</div>", unsafe_allow_html=True)
     st.markdown(f"<div style='font-size: 24px; font-weight: bold; color: #ff6347; text-align: center; padding: 10px; background-color: #f0f8ff; border-radius: 10px;'>Eutectic Phase Fraction (After Cleaning): {eutectic_fraction_after:.4%}</div>", unsafe_allow_html=True)
 
-# ⭐ Fun GitHub star request section ⭐
-# ⭐ Fun GitHub star request section ⭐
-st.markdown("""
-    <div style='text-align: center; margin-top: 20px;'>
-        <h2>⭐ Enjoyed this App? Support by Starring on GitHub! ⭐</h2>
-        <p style='font-size: 18px;'>If you found this tool helpful, give it a ⭐ on GitHub! Your support helps academic research! 📚</p>
-        <a href='https://github.com/geonik71/Eutectic-Phase-Analysis' target='_blank'>
-            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1024px-Octicons-mark-github.svg.png' width='120'>
-        </a>
-        <p style='font-size: 18px;'><a href='https://github.com/your-github-repo' target='_blank' style='text-decoration: none; font-weight: bold; color: #0366d6;'>Click here to star!</a> ⭐</p>
-    </div>
-""", unsafe_allow_html=True)
-
-
-# Create two columns for "How the Code Works" and "Description"
+# Explanation Section
 col1, col2 = st.columns(2)
 
 with col1:
@@ -123,13 +124,3 @@ with col2:
     st.markdown("""
         <p style='font-size: 18px;'>The eutectic phase refers to a specific mixture of two materials that, when solidified, form a unique microstructure. The eutectic phase often plays an important role in determining the physical properties of alloys. This analysis helps in identifying and quantifying the eutectic phase in materials like metals, where the distribution and volume fraction of this phase can influence the mechanical properties of the final product.</p>
     """, unsafe_allow_html=True)
-
-# Explanation of detection images
-st.markdown("""  
-    <h2 style='font-size: 24px;'>Why Two Detection Images?</h2>
-    <p style='font-size: 18px;'>In some cases, the eutectic phase may be mixed with unwanted eutectic regions in the grains, or there may be noise present in the image that can distort the analysis. To handle these challenges, we provide two types of detection images:</p>
-    <ul style='font-size: 18px;'>
-        <li><strong>Thresholded Image (Otsu):</strong> This image represents the initial thresholding result, where the eutectic phase is separated from the background using Otsu's method.</li>
-        <li><strong>Cleaned Image (Dots Removed):</strong> This image removes small unwanted regions and artifacts, offering a cleaner representation of the actual eutectic phase.</li>
-    </ul>
-""", unsafe_allow_html=True)
