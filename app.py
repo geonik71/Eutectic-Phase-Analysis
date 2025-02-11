@@ -68,7 +68,7 @@ if uploaded_file is not None:
     col1, col2, col3 = st.columns(3)
 
     # Format selection dropdown
-    image_format = st.selectbox("Select download format:", ["PNG", "JPG", "JPEG", "TIFF", "TIF"])
+    image_format = st.selectbox("Select download format:", ["PNG", "JPEG", "TIFF"])
 
     with col1:
         st.image(cv2.cvtColor(image, cv2.COLOR_BGR2RGB), caption="Original Image", use_container_width=True)
