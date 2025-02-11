@@ -90,16 +90,18 @@ if uploaded_file is not None:
     st.markdown(f"<div style='font-size: 24px; font-weight: bold; color: #ff6347; text-align: center; padding: 10px; background-color: #f0f8ff; border-radius: 10px;'>Eutectic Phase Fraction (After Cleaning): {eutectic_fraction_after:.4%}</div>", unsafe_allow_html=True)
 
 # ⭐ Fun GitHub star request section ⭐
+# ⭐ Fun GitHub star request section ⭐
 st.markdown("""
     <div style='text-align: center; margin-top: 20px;'>
         <h2>⭐ Enjoyed this App? Support by Starring on GitHub! ⭐</h2>
-        <p style='font-size: 18px;'>If you found this tool helpful, give it a ⭐ on GitHub! It means a lot! 😊</p>
+        <p style='font-size: 18px;'>If you found this tool helpful, give it a ⭐ on GitHub! Your support helps academic research! 📚</p>
         <a href='https://github.com/your-github-repo' target='_blank'>
-            <img src='https://media.giphy.com/media/l0Exk8EUzSLsrErEQ/giphy.gif' width='200'>
+            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1024px-Octicons-mark-github.svg.png' width='120'>
         </a>
-        <p style='font-size: 18px;'><a href='https://github.com/your-github-repo' target='_blank' style='text-decoration: none; font-weight: bold; color: #FF4500;'>Click here to star!</a> 🚀</p>
+        <p style='font-size: 18px;'><a href='https://github.com/your-github-repo' target='_blank' style='text-decoration: none; font-weight: bold; color: #0366d6;'>Click here to star!</a> ⭐</p>
     </div>
 """, unsafe_allow_html=True)
+
 
 # Create two columns for "How the Code Works" and "Description"
 col1, col2 = st.columns(2)
