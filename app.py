@@ -88,6 +88,18 @@ if uploaded_file is not None:
     # Step 3: Display the eutectic phase fractions with custom styling
     st.markdown(f"<div style='font-size: 24px; font-weight: bold; color: #ff6347; text-align: center; padding: 10px; background-color: #f0f8ff; border-radius: 10px;'>Eutectic Phase Fraction (Before Cleaning): {eutectic_fraction_before:.4%}</div>", unsafe_allow_html=True)
     st.markdown(f"<div style='font-size: 24px; font-weight: bold; color: #ff6347; text-align: center; padding: 10px; background-color: #f0f8ff; border-radius: 10px;'>Eutectic Phase Fraction (After Cleaning): {eutectic_fraction_after:.4%}</div>", unsafe_allow_html=True)
+    # Add a fun GitHub star request
+    st.markdown("""
+        <div style='text-align: center; margin-top: 20px;'>
+            <h2>⭐ Enjoyed this App? Support by Starring on GitHub! ⭐</h2>
+            <p style='font-size: 18px;'>If you found this tool helpful, give it a ⭐ on GitHub! It means a lot! 😊</p>
+            <a href='https://github.com/your-github-repo' target='_blank'>
+                <img src='https://media.giphy.com/media/l0Exk8EUzSLsrErEQ/giphy.gif' width='200'>
+            </a>
+            <p style='font-size: 18px;'><a href='https://github.com/your-github-repo' target='_blank' style='text-decoration: none; font-weight: bold; color: #FF4500;'>Click here to star!</a> 🚀</p>
+        </div>
+    """, unsafe_allow_html=True)
+
 # Create two columns for "How the Code Works" and "Description"
 col1, col2 = st.columns(2)
 
