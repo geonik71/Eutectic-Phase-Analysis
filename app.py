@@ -95,7 +95,7 @@ st.markdown("""
     <div style='text-align: center; margin-top: 20px;'>
         <h2>⭐ Enjoyed this App? Support by Starring on GitHub! ⭐</h2>
         <p style='font-size: 18px;'>If you found this tool helpful, give it a ⭐ on GitHub! Your support helps academic research! 📚</p>
-        <a href='https://github.com/your-github-repo' target='_blank'>
+        <a href='https://github.com/geonik71/Eutectic-Phase-Analysis' target='_blank'>
             <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1024px-Octicons-mark-github.svg.png' width='120'>
         </a>
         <p style='font-size: 18px;'><a href='https://github.com/your-github-repo' target='_blank' style='text-decoration: none; font-weight: bold; color: #0366d6;'>Click here to star!</a> ⭐</p>
