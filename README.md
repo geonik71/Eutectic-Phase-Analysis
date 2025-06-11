@@ -1,4 +1,4 @@
-# Eutectic Phase Analysis Streamlit App
+# Eutectic Phase Area Fraction Calculator Streamlit App
 
 This Streamlit app performs eutectic phase analysis on images to identify and calculate the eutectic phase fraction in materials, particularly in alloys. The app uses image processing techniques to clean the images and remove unwanted noise, providing a more accurate representation of the eutectic phase.
 
